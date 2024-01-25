@@ -25,6 +25,7 @@ namespace Sudoku
                 for (int j = 0; j < 9; j++)
                 {
                     board[i, j] = 0;
+                    Console.WriteLine();
                 }
             }
         }
