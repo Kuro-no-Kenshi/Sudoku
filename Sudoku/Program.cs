@@ -30,6 +30,7 @@ namespace Sudoku
                 {
                     board[i, j] = 0;
                 }
+                Console.WriteLine();
             }
         }
     }
