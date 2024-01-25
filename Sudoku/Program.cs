@@ -10,11 +10,15 @@ namespace Sudoku
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Let's play Sudoku!");
-
+            for (int i=0;i<9;i++)
+            {
+                for(int j = 0; j < 9; j++)
+                {
+                    Console.Write("|n|");
+                }
+                Console.WriteLine("");
+            }
             Console.ReadKey();
-
         }
     }
 }
