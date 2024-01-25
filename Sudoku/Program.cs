@@ -8,7 +8,7 @@ namespace Sudoku
 {
     internal class Program
     {
-        static int[,] board = new int[9, 9];
+        static int[,] cazzo = new int[9, 9];
         static void Main(string[] args)
         {
 
@@ -25,7 +25,6 @@ namespace Sudoku
                 for (int j = 0; j < 9; j++)
                 {
                     board[i, j] = 0;
-                    Console.WriteLine();
                 }
             }
         }
