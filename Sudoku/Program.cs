@@ -13,6 +13,62 @@ namespace Sudoku
 
         static void Main(string[] args)
         {
+            InitializeBoard();
+            AddRandomNumbers();
+
+            Console.WriteLine("Benvenuto al gioco di Sudoku!");
+
+            while (!IsSudokuSolved())
+            {
+                PrintBoard();
+
+                Console.Write("Inserisci il tuo numero (riga colonna valore), es. 3 4 5: ");
+                string input = Console.ReadLine();
+
+                if (input.ToLower() == "risolvi")
+                {
+                    SolveSudoku();
+                    break;
+                }
+
+                string[] inputs = input.Split(' ');
+
+                if (inputs.Length == 3 && int.TryParse(inputs[0], out int row) &&
+                    int.TryParse(inputs[1], out int col) && int.TryParse(inputs[2], out int value))
+                {
+                    if (IsValidMove(row - 1, col - 1, value))
+                    {
+                        board[row - 1, col - 1] = value;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Mossa non valida. Riprova.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input non valido. Riprova.");
+                }
+            }
+
+            Console.WriteLine("\nCongratulazioni! Sudoku risolto!");
+        }
+        static void InitializeBoard()
+        {
+            // Inizializza la board con tutti zeri
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.WriteLine();
+                    board[i, j] = 0;
+                }
+                Console.WriteLine();    
+            }
+        }
+
+        static void PrintBoard()
+        {
             for (int i=0;i<9;i++)
             {
                 for (int j = 0; j < 9; j++)
@@ -29,19 +85,6 @@ namespace Sudoku
                 Console.WriteLine("");
             }
             Console.ReadKey();
-        }
-        static void InitializeBoard()
-        {
-            // Inizializza la board con tutti zeri
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    Console.WriteLine();
-                    board[i, j] = 0;
-                }
-                Console.WriteLine();    
-            }
         }
 
         static void AddRandomNumbers()
@@ -67,6 +110,7 @@ namespace Sudoku
                 board[randomRow, randomCol] = randomValue;
             }
         }
+
         static bool IsValidMove(int row, int col, int num)
         {
             for (int i = 0; i < 9; i++)
