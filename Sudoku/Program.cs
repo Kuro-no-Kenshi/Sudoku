@@ -8,7 +8,7 @@ namespace Sudoku
 {
     internal class Program
     {
-        static int[,] cazzo = new int[9, 9];
+        static int[,] board = new int[9, 9];
         static void Main(string[] args)
         {
 
